@@ -81,16 +81,17 @@ def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, 
     # 如果是这样，就删除响应的子弹和外星人
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
 
-    if collisions:5
-        for aliens in collisions.values():
-            stats.score += ai_settings.alien_points * len(aliens)
-        sb.prep_score()
+    if collisions: 5
+    for aliens in collisions.values():
+        stats.score += ai_settings.alien_points * len(aliens)
+    sb.prep_score()
 
-    if len(aliens) == 0:
-        # 删除现有的所有的子弹，加快游戏节奏，并创建一群外星人
-        bullets.empty()
-        ai_settings.increase_speed()
-        create_fleet(ai_settings, screen, ship, aliens)
+
+if len(aliens) == 0:
+    # 删除现有的所有的子弹，加快游戏节奏，并创建一群外星人
+    bullets.empty()
+    ai_settings.increase_speed()
+    create_fleet(ai_settings, screen, ship, aliens)
 
 
 def fire_bullet(ai_settings, screen, ship, bullets):
